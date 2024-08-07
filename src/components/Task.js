@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Task = ({task, updateTask, deleteTask}) => {
     const[Editing, setEditing] = useState(false);
     const[taskName, setTaskName] = useState(task.name);
 
+useEffect(() => {
+    setTaskName(task.name);
+},[task]);
     const updates = ()=>{
         if(taskName.trim()){
      updateTask({...task, name:taskName});
      setEditing(false);
         }
+    }
+    const handletaskcompletion = () =>{
+        updateTask({...task, completed: task.completed});
     }
 
 return(
@@ -22,6 +28,7 @@ return(
 
         ):(
             <>
+            Task completed <input type = "checkbox" onChange={handletaskcompletion}/>
              <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
             {task.name}
           </span>

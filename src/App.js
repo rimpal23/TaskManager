@@ -2,7 +2,7 @@ import React,{ useState } from 'react';
 import './App.css';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
-
+import TaskStats from './components/TaskStats';
 const App = () =>{
 
 const[tasks, setTasks] = useState([]);
@@ -23,6 +23,7 @@ return(
     <h1> Task Manager</h1>
     <TaskForm addTask = {addTask}/>
     <TaskList tasks = {tasks} updateTask = {updateTask} deleteTask={deleteTask}/>
+    <TaskStats tasks = {tasks}/>
   </div>
 )
 }
