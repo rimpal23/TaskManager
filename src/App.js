@@ -16,7 +16,7 @@ const addTask = (task) =>{ //addTask function that updates the state of tasks by
 
 const updateTask = (updatedTask) => {
   setTasks(tasks.map(task => task.id === updatedTask.id ? updatedTask : task));//map iterates through each task and looks for matching id
-  setSelectedTask(null);
+  setSelectedTask(updatedTask.id);
 }
 
 const deleteTask = (id) =>{
