@@ -21,3 +21,23 @@ button {
 div {
   margin-top: 10px;
 }
+h1{
+  text-align: center;
+  background-color: lightcoral;
+}
+.TaskApp{
+  display: flex;
+  justify-content: space-between;
+}
+#app{
+  background-color: lightskyblue;
+  box-shadow: 0 4px 8px;
+  width: 48%;
+}
+#stats{
+  background-color: aqua;
+  box-shadow: 0 4px 8px;
+  width: 48%;
+  text-align: center;
+}
+

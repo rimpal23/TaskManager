@@ -10,15 +10,17 @@ const data = [
     {name: 'Pending', value: pendingTasks}
 ];
 
-const COLORS = ['blue', 'orange'];
+const COLORS = ['green', 'red'];
 
 return(
     <div>
         <h2>Task Stats</h2>
-        <PieChart width = {500} height ={500}>
-            <Pie data = {data} cx={300} cy={300} labelLine={false} 
+        {tasks.length > 0? 
+        (
+        <PieChart width = {800} height ={500}>
+            <Pie data = {data} cx={350} cy={200} labelLine={false} 
             label={({name, percent}) => `${name} (${(percent*100).toFixed(0)}%)`}
-            outerRadius={90}
+            outerRadius={120}
             fill='yellow'
             dataKey="value">
                {data.map((entry, index) => (
@@ -28,7 +30,11 @@ return(
             <Tooltip/>
             <Legend/>
         </PieChart>
+        ):(
+        <p>No tasks added to show stats</p>
+        )}
     </div>
 )
-}
+}//entry is current item. Cell component refers to each slice of pie chart.
+//[index%colors.length] makes sure that index wraps to the beginning of colors array if slices are more than colors
 export default TaskStats;

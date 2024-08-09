@@ -3,18 +3,22 @@ import React, { useEffect, useState } from 'react';
 const Task = ({task, updateTask, deleteTask}) => {
     const[Editing, setEditing] = useState(false);
     const[taskName, setTaskName] = useState(task.name);
+    const[completed,setCompleted] = useState(task.completed);
 
 useEffect(() => {
     setTaskName(task.name);
-},[task]);
-    const updates = ()=>{
+    setCompleted(task.completed);
+},[task]);//task is a dependency array, will only run when task prop changes
+    
+const updates = ()=>{
         if(taskName.trim()){
-     updateTask({...task, name:taskName});
+     updateTask({...task, name:taskName, completed});
      setEditing(false);
         }
     }
     const handletaskcompletion = () =>{
-        updateTask({...task, completed: task.completed});
+        setCompleted(!completed);
+        updateTask({...task, completed: !completed});
     }
 
 return(
@@ -28,13 +32,13 @@ return(
 
         ):(
             <>
-            Task completed <input type = "checkbox" onChange={handletaskcompletion}/>
-             <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
+            Tasks completed : <input type = "checkbox" checked={completed} onChange={handletaskcompletion}/>
+             <span style={{ textDecoration: completed ? 'line-through' : 'none' }}>
             {task.name}
-          </span>
+          </span><br></br><br></br>
+          <h3>Modify Task</h3>
           <button onClick={() => setEditing(true)}>Edit</button>
-          <button onClick={() => deleteTask(task.id)}>Delete</button>
-            </>
+          <button onClick={() => deleteTask(task.id)}>Delete</button></>
         )}
     </div>
 )
