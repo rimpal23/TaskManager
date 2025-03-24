@@ -1,4 +1,4 @@
-Task manager application allows users to add, edit, delete and track different tasks.
+Task manager application allows users to add, edit, delete and track status of different tasks.
 
 Tech Stack:
 
