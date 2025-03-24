@@ -2,7 +2,7 @@ Task manager application allows users to add, edit, delete and track status of d
 
 Tech Stack:
 
-- Frontend: React, HTML, CSS
+- Frontend: React/Redux, HTML, CSS
 - Backend: NodeJS
 
 Setup and installation:
